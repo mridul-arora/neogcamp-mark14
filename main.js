@@ -34,30 +34,34 @@ function clickHandler() {
     console.log(priceAtWhichSold);
     console.log(priceAtWhichBought);
 
-    if (priceAtWhichSold === priceAtWhichBought) {
-        flag = 0;
-        console.log(flag);
-        profitnloss = 0;
-        totalPnL = 0;
-        pnlPerc = 0;
-        showText("No profit, No loss.");
-        showHint("Actually, you lost money on transaction fees, TTS, etc. ");
-    } else if (priceAtWhichSold < priceAtWhichBought) {
-        flag = -1;
-        console.log(flag);
-        profitnloss = priceAtWhichBought - priceAtWhichSold;
-        totalPnL = profitnloss * quantityOfStock;
-        pnlPerc = profitnloss * 100 / priceAtWhichBought;
-        showText("Ohhoo..! Loss: Rs." + totalPnL + ", and your Loss% is: " + pnlPerc + "%.");
-        hideHint();
-    } else {
-        flag = 1;
-        console.log(flag);
-        profitnloss = priceAtWhichSold - priceAtWhichBought;
-        totalPnL = profitnloss * quantityOfStock;
-        pnlPerc = profitnloss * 100 / priceAtWhichBought;
-        showText("Congrats! Profit: Rs." + totalPnL + ", and your Profit% is: " + pnlPerc + "%.");
-        hideHint();
+    if(quantityOfStock > 0){
+        if (priceAtWhichSold === priceAtWhichBought) {
+            flag = 0;
+            console.log(flag);
+            profitnloss = 0;
+            totalPnL = 0;
+            pnlPerc = 0;
+            showText("No profit, No loss.");
+            showHint("Actually, you lost money on transaction fees, TTS, etc. ");
+        } else if (priceAtWhichSold < priceAtWhichBought) {
+            flag = -1;
+            console.log(flag);
+            profitnloss = priceAtWhichBought - priceAtWhichSold;
+            totalPnL = profitnloss * quantityOfStock;
+            pnlPerc = profitnloss * 100 / priceAtWhichBought;
+            showText("Ohhoo..! Loss: Rs." + totalPnL + ", and your Loss% is: " + pnlPerc + "%.");
+            hideHint();
+        } else {
+            flag = 1;
+            console.log(flag);
+            profitnloss = priceAtWhichSold - priceAtWhichBought;
+            totalPnL = profitnloss * quantityOfStock;
+            pnlPerc = profitnloss * 100 / priceAtWhichBought;
+            showText("Congrats! Profit: Rs." + totalPnL + ", and your Profit% is: " + pnlPerc + "%.");
+            hideHint();
+        }
+    }else{
+        showText("Quantity of Stocks should be greater than 0.");
     }
 }
 

@@ -22,6 +22,10 @@ const quantityOfStocks = document.querySelector("#qnty");
 const currentPrice = document.querySelector("#curprice");
 const btnProfitnLoss = document.querySelector("#btn-profitnloss");
 
+function roundNumber(num){
+return (Math.round(num * 100) / 100);
+}
+
 function clickHandler() {
     var priceAtWhichBought = Number(intitalPrice.value);
     var priceAtWhichSold = Number(currentPrice.value);
@@ -49,7 +53,7 @@ function clickHandler() {
             profitnloss = priceAtWhichBought - priceAtWhichSold;
             totalPnL = profitnloss * quantityOfStock;
             pnlPerc = profitnloss * 100 / priceAtWhichBought;
-            showText("Ohhoo..! Loss: Rs." + totalPnL + ", and your Loss% is: " + pnlPerc + "%.");
+            showText("Ohhoo..! Loss: Rs." + roundNumber(totalPnL) + ", and your Loss% is: " + roundNumber(pnlPerc) + "%.");
             hideHint();
         } else {
             flag = 1;
@@ -57,7 +61,7 @@ function clickHandler() {
             profitnloss = priceAtWhichSold - priceAtWhichBought;
             totalPnL = profitnloss * quantityOfStock;
             pnlPerc = profitnloss * 100 / priceAtWhichBought;
-            showText("Congrats! Profit: Rs." + totalPnL + ", and your Profit% is: " + pnlPerc + "%.");
+            showText("Congrats! Profit: Rs." + roundNumber(totalPnL) + ", and your Profit% is: " + roundNumber(pnlPerc) + "%.");
             hideHint();
         }
     }else{
